@@ -1,0 +1,185 @@
+/* Auto-generated verification file for unit_test_hsm */
+#include "unit_test_hsm_verify.h"
+#include <stdio.h>
+
+void unit_test_hsm_verify_print(void)
+{
+    printf("\n=== CONFIG ===\n");
+    printf("  name        : Unit_Test\n");
+    printf("  loop_time   : 1\n");
+    printf("  event_prefix: EVT2\n");
+    printf("  state_prefix: STA\n");
+    printf("  author      : IDPMN0\n");
+    printf("  date        : 2026-04-01 10:00:49\n");
+    printf("  output path : C:\\Users\\IDPCJ0\\Documents\\Personal\\code\\GeneratorStateMachine\n");
+
+    printf("\n=== TRIGGERS (22) ===\n");
+    printf("  [ 0] name=PRUEBA1                                  type=HSM_CALLBACK    value=0\n");
+    printf("  [ 1] name=XX1                                      type=HSM_CALLBACK    value=0\n");
+    printf("  [ 2] name=XX2                                      type=HSM_CALLBACK    value=0\n");
+    printf("  [ 3] name=DD1                                      type=HSM_CALLBACK    value=0\n");
+    printf("  [ 4] name=DD2                                      type=HSM_CALLBACK    value=0\n");
+    printf("  [ 5] name=PP1                                      type=HSM_CALLBACK    value=0\n");
+    printf("  [ 6] name=CC1                                      type=HSM_CALLBACK    value=0\n");
+    printf("  [ 7] name=CC2                                      type=HSM_CALLBACK    value=0\n");
+    printf("  [ 8] name=BB1                                      type=HSM_CALLBACK    value=0\n");
+    printf("  [ 9] name=PP2                                      type=HSM_CALLBACK    value=0\n");
+    printf("  [10] name=BB2                                      type=HSM_CALLBACK    value=0\n");
+    printf("  [11] name=FIRST_TRIGGER                            type=HSM_CALLBACK    value=0\n");
+    printf("  [12] name=SECOND_TRIGGER2                          type=HSM_CALLBACK    value=0\n");
+    printf("  [13] name=TRANSITION_STATE1_TO_STATE2              type=HSM_CALLBACK    value=0\n");
+    printf("  [14] name=TRANSITION_CHILDB_TO_SIBLINGB            type=HSM_CALLBACK    value=0\n");
+    printf("  [15] name=EVENT4                                   type=HSM_CALLBACK    value=0\n");
+    printf("  [16] name=TRANSITION_CHILDA_TO_CHILDB              type=HSM_CALLBACK    value=0\n");
+    printf("  [17] name=EVENTA                                   type=HSM_CALLBACK    value=0\n");
+    printf("  [18] name=SELF_TRANSITION_STATE7                   type=HSM_CALLBACK    value=0\n");
+    printf("  [19] name=SELF_TRANSITION2_STATE7                  type=HSM_CALLBACK    value=0\n");
+    printf("  [20] name=TRANSITION_PARENT_B_TO_PARENTC           type=HSM_CALLBACK    value=0\n");
+    printf("  [21] name=TRANSITION_GRANDPARENTC_TO_CHILDD        type=HSM_TIMING      value=10\n");
+
+    printf("\n=== STATES (15) ===\n");
+    printf("\n  [ 0] ChildA\n");
+    printf("        type   : normal\n");
+    printf("        parent : none\n");
+    printf("        entry  : EntryChildA\n");
+    printf("        exit   : ExitChildA\n");
+    printf("        do     : none\n");
+    printf("        transitions (4):\n");
+    printf("          T0: events=[EVENTA]  guard=none  action=none  -> ChildB\n");
+    printf("          T1: events=[EVENT4, TRANSITION_CHILDA_TO_CHILDB]  guard=!guard4  action=none  -> ChildB\n");
+    printf("          T2: events=[FIRST_TRIGGER]  guard=guardAnnounce  action=none  -> ChildA\n");
+    printf("          T3: events=[SECOND_TRIGGER2]  guard=none  action=none  -> ChildA\n");
+    printf("\n  [ 1] GrandParentC\n");
+    printf("        type   : normal\n");
+    printf("        parent : none\n");
+    printf("        entry  : EntryGrandParentC\n");
+    printf("        exit   : ExitGrandParentC\n");
+    printf("        do     : none\n");
+    printf("        transitions (3):\n");
+    printf("          T0: events=[CC1, CC2]  guard=none  action=none  -> ChildC\n");
+    printf("          T1: events=[PRUEBA1]  guard=none  action=none  -> ChildD\n");
+    printf("          T2: events=[TRANSITION_GRANDPARENTC_TO_CHILDD]  guard=guard4&&guard5  action=none  -> ChildD\n");
+    printf("\n  [ 2] ParentC\n");
+    printf("        type   : normal\n");
+    printf("        parent : GrandParentC\n");
+    printf("        entry  : EntryParentC\n");
+    printf("        exit   : ExitParentC\n");
+    printf("        do     : none\n");
+    printf("        transitions (1):\n");
+    printf("          T0: events=[PP1, PP2]  guard=none  action=none  -> ChildC\n");
+    printf("\n  [ 3] ChildC\n");
+    printf("        type   : normal\n");
+    printf("        parent : ParentC\n");
+    printf("        entry  : EntryChildC\n");
+    printf("        exit   : ExitChildC\n");
+    printf("        do     : none\n");
+    printf("        transitions (1):\n");
+    printf("          T0: events=[SELF_TRANSITION_STATE7, SELF_TRANSITION2_STATE7]  guard=none  action=none  -> ChildC\n");
+    printf("\n  [ 4] Initial\n");
+    printf("        type   : initial\n");
+    printf("        parent : ParentC\n");
+    printf("        entry  : none\n");
+    printf("        exit   : none\n");
+    printf("        do     : none\n");
+    printf("        transitions (1):\n");
+    printf("          T0: events=[completion]  guard=none  action=none  -> ChildC\n");
+    printf("\n  [ 5] Initial\n");
+    printf("        type   : initial\n");
+    printf("        parent : GrandParentC\n");
+    printf("        entry  : none\n");
+    printf("        exit   : none\n");
+    printf("        do     : none\n");
+    printf("        transitions (1):\n");
+    printf("          T0: events=[completion]  guard=none  action=none  -> ChildC\n");
+    printf("\n  [ 6] ParentB\n");
+    printf("        type   : normal\n");
+    printf("        parent : none\n");
+    printf("        entry  : EntryParentB\n");
+    printf("        exit   : ExitParentB\n");
+    printf("        do     : none\n");
+    printf("        transitions (1):\n");
+    printf("          T0: events=[TRANSITION_PARENT_B_TO_PARENTC]  guard=none  action=CompleteState2  -> ChildC\n");
+    printf("\n  [ 7] ChildB\n");
+    printf("        type   : normal\n");
+    printf("        parent : ParentB\n");
+    printf("        entry  : EntryChildB\n");
+    printf("        exit   : ExitChildB\n");
+    printf("        do     : none\n");
+    printf("        transitions (3):\n");
+    printf("          T0: events=[BB1, BB2]  guard=none  action=none  -> ChildB\n");
+    printf("          T1: events=[EVENTA]  guard=none  action=none  -> SiblingB\n");
+    printf("          T2: events=[TRANSITION_CHILDB_TO_SIBLINGB]  guard=none  action=none  -> SiblingB\n");
+    printf("\n  [ 8] SiblingB\n");
+    printf("        type   : normal\n");
+    printf("        parent : ParentB\n");
+    printf("        entry  : EntrySiblingB\n");
+    printf("        exit   : ExitSiblingB\n");
+    printf("        do     : none\n");
+    printf("        transitions: none\n");
+    printf("\n  [ 9] Initial\n");
+    printf("        type   : initial\n");
+    printf("        parent : ParentB\n");
+    printf("        entry  : none\n");
+    printf("        exit   : none\n");
+    printf("        do     : none\n");
+    printf("        transitions (1):\n");
+    printf("          T0: events=[completion]  guard=none  action=none  -> ChildB\n");
+    printf("\n  [10] ParentD\n");
+    printf("        type   : normal\n");
+    printf("        parent : none\n");
+    printf("        entry  : none\n");
+    printf("        exit   : none\n");
+    printf("        do     : none\n");
+    printf("        transitions (2):\n");
+    printf("          T0: events=[DD1, DD2]  guard=none  action=none  -> ChildD\n");
+    printf("          T1: events=[completion]  guard=none  action=none  -> ChildB\n");
+    printf("\n  [11] ChildD\n");
+    printf("        type   : normal\n");
+    printf("        parent : ParentD\n");
+    printf("        entry  : none\n");
+    printf("        exit   : none\n");
+    printf("        do     : none\n");
+    printf("        transitions (2):\n");
+    printf("          T0: events=[XX1, XX2]  guard=none  action=none  -> ChildD\n");
+    printf("          T1: events=[completion]  guard=none  action=none  -> Final\n");
+    printf("\n  [12] Initial\n");
+    printf("        type   : initial\n");
+    printf("        parent : ParentD\n");
+    printf("        entry  : none\n");
+    printf("        exit   : none\n");
+    printf("        do     : none\n");
+    printf("        transitions (3):\n");
+    printf("          T0: events=[completion]  guard=none  action=none  -> ChildD\n");
+    printf("          T1: events=[completion]  guard=none  action=none  -> 42\n");
+    printf("          T2: events=[completion]  guard=none  action=none  -> 46\n");
+    printf("\n  [13] Final\n");
+    printf("        type   : final\n");
+    printf("        parent : ParentD\n");
+    printf("        entry  : none\n");
+    printf("        exit   : none\n");
+    printf("        do     : none\n");
+    printf("        transitions: none\n");
+    printf("\n  [14] Initial\n");
+    printf("        type   : initial\n");
+    printf("        parent : none\n");
+    printf("        entry  : none\n");
+    printf("        exit   : none\n");
+    printf("        do     : none\n");
+    printf("        transitions (1):\n");
+    printf("          T0: events=[completion]  guard=none  action=none  -> ChildA\n");
+
+    printf("\n=== SUMMARY ===\n");
+    printf("  Total states     : 15 (9 normal, 5 initial, 1 final)\n");
+    printf("  Total transitions: 24\n");
+    printf("  Total triggers   : 22\n");
+    printf("\n");
+}
+
+#ifdef VERIFY_MAIN
+#include <stdlib.h>
+int main(void)
+{
+    unit_test_hsm_verify_print();
+    return EXIT_SUCCESS;
+}
+#endif /* VERIFY_MAIN */
