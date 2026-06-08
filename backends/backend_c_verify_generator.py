@@ -65,6 +65,8 @@ class CVerifyGenerator(IGenerator):
             f.write(f"#ifndef {guard}\n#define {guard}\n\n")
             f.write("/* Prints the full state machine model to stdout. */\n")
             f.write(f"void {self._verify_name}_print(void);\n\n")
+            f.write("/* Prints MANIFEST counts and returns 0. */\n")
+            f.write(f"int  {self._verify_name}_verify_counts(void);\n\n")
             f.write(f"#endif /* {guard} */\n")
 
     # ------------------------------------------------------------------
@@ -159,12 +161,27 @@ class CVerifyGenerator(IGenerator):
             f.write("}\n\n")
 
             # ----------------------------------------------------------
+            # verify_counts — prints MANIFEST lines
+            # ----------------------------------------------------------
+            f.write(f"int {self._verify_name}_verify_counts(void)\n{{\n")
+            f.write('    printf("\\n=== MANIFEST ===\\n");\n')
+            f.write(f'    printf("MANIFEST:state_count={state_count}\\n");\n')
+            f.write(f'    printf("MANIFEST:normal_state_count={normal_count}\\n");\n')
+            f.write(f'    printf("MANIFEST:initial_state_count={initial_count}\\n");\n')
+            f.write(f'    printf("MANIFEST:final_state_count={final_count}\\n");\n')
+            f.write(f'    printf("MANIFEST:transition_count={trans_count}\\n");\n')
+            f.write(f'    printf("MANIFEST:trigger_count={trig_count}\\n");\n')
+            f.write("    return 0;\n")
+            f.write("}\n\n")
+
+            # ----------------------------------------------------------
             # main() — compile standalone with -DVERIFY_MAIN
             # ----------------------------------------------------------
             f.write("#ifdef VERIFY_MAIN\n")
             f.write("#include <stdlib.h>\n")
             f.write("int main(void)\n{\n")
             f.write(f"    {self._verify_name}_print();\n")
+            f.write(f"    {self._verify_name}_verify_counts();\n")
             f.write("    return EXIT_SUCCESS;\n")
             f.write("}\n")
             f.write("#endif /* VERIFY_MAIN */\n")
